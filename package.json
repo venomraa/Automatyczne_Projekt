@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "delete:reportFolder": "powershell remove-item mochawesome-report/ -r -force -ErrorAction SilentlyContinue",
+    "test:cli": "npm run delete:reportFolder && cypress run",
+    "merge:reports": "mochawesome-merge mochawesome-report/*.json > cypress-combined-report.json",
+    "create:html:report": "npm run merge:reports && marge --reportDir TestReport cypress-combined-report.json"
+  },
+  "dependencies": {
+    "@cypress/grep": "^3.1.5",
+    "cypress": "^12.10.0",
+    "mocha": "^10.2.0",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0"
+  }
+
+}
